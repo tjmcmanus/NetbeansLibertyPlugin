@@ -1,13 +1,16 @@
-package org.netbeans.modules.liberty;
+package org.netbeans.modules.liberty.main;
 
+import java.awt.Image;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.api.server.ServerInstance;
 import org.netbeans.spi.server.ServerInstanceImplementation;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
 import org.openide.nodes.Node;
+import org.openide.util.ImageUtilities;
 
 public final class LibertyInstanceImplementation implements ServerInstanceImplementation {
 
@@ -18,6 +21,9 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     private ServerInstance serverInstance;
     private JPanel customizer;
 
+    @StaticResource
+    private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
+    
     public LibertyInstanceImplementation(LibertyInstanceProvider provider, String serverName, String instanceName, boolean removable) {
         this.provider = provider;
         this.serverName = serverName;
@@ -29,6 +35,10 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     public Node getFullNode() {
         return new AbstractNode(Children.LEAF) {
             @Override
+            public Image getIcon(int type) {
+                return ImageUtilities.loadImage(ICON);
+            }
+            @Override
             public String getDisplayName() {
                 return instanceName;
             }
@@ -38,6 +48,10 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     @Override
     public Node getBasicNode() {
         return new AbstractNode(Children.LEAF) {
+            @Override
+            public Image getIcon(int type) {
+                return ImageUtilities.loadImage(ICON);
+            }
             @Override
             public String getDisplayName() {
                 return instanceName;
@@ -55,7 +69,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             return customizer;
         }
     }
-
+    
     @Override
     public String getDisplayName() {
         return instanceName;

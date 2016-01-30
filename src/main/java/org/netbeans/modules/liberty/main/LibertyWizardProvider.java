@@ -1,4 +1,4 @@
-package org.netbeans.modules.liberty;
+package org.netbeans.modules.liberty.main;
 
 import java.awt.Component;
 import java.io.IOException;
