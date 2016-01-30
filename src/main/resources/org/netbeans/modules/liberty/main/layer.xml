@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    
+    <folder name="Servers">
+        <file name="LibertyInstanceProvider.instance">
+            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.LibertyInstanceProvider"/>
+            <attr name="instanceOf" stringvalue="org.netbeans.spi.server.ServerInstanceProvider"/>
+        </file>
+        <file name="LibertyWizardProvider.instance">
+            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.LibertyWizardProvider"/>
+            <attr name="instanceOf" stringvalue="org.netbeans.spi.server.ServerWizardProvider"/>
+        </file>
+    </folder>
+    
+</filesystem>
