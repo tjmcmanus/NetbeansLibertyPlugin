@@ -88,7 +88,7 @@ public class LibertyWizardProvider implements ServerWizardProvider {
         @Override
         public void removeChangeListener(ChangeListener l) {
         }
-        
+
     }
 
     private static class LibertyWizardPanel implements Panel {
@@ -134,7 +134,7 @@ public class LibertyWizardProvider implements ServerWizardProvider {
         @Override
         public void storeSettings(Object settings) {
         }
-        
+
     }
 
 }
