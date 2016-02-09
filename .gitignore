@@ -57,6 +57,7 @@ nbproject
 .project
 .settings
 composer.lock
+nb-configuration.xml
 
 
 /target/
