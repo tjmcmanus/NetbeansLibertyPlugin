@@ -1,7 +1,10 @@
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.io.File;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -48,6 +51,30 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             @Override
             public String getDisplayName() {
                 return instanceName;
+            }
+
+            @Override
+            public Action[] getActions(boolean context) {
+                return new Action[]{
+                    new AbstractAction("Run") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            run();
+                        }
+                    },
+                    new AbstractAction("Stop") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            stop();
+                        }
+                    },
+                    new AbstractAction("Debug") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            debug();
+                        }
+                    }
+                };
             }
         };
     }
