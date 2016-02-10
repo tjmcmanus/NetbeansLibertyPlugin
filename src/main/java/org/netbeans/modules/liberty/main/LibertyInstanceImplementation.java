@@ -1,6 +1,7 @@
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Image;
+import java.io.File;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,15 +21,20 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     private final boolean removable;
     private ServerInstance serverInstance;
     private JPanel customizer;
+    private final ServerInfo serverInfo;
+    private final ServerUtils serverUtils = new ServerUtils();
 
     @StaticResource
     private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
-    
-    public LibertyInstanceImplementation(LibertyInstanceProvider provider, String serverName, String instanceName, boolean removable) {
+
+    public LibertyInstanceImplementation(LibertyInstanceProvider provider, String serverName, String instanceName, String runtimeLocation, boolean removable) {
         this.provider = provider;
         this.serverName = serverName;
         this.instanceName = instanceName;
         this.removable = removable;
+
+        File userDir = new File(runtimeLocation + "\\usr");
+        this.serverInfo = new ServerInfo(userDir, null, serverName, runtimeLocation, new File(System.getProperty("java.home")), 7777);
     }
 
     @Override
@@ -38,6 +44,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             public Image getIcon(int type) {
                 return ImageUtilities.loadImage(ICON);
             }
+
             @Override
             public String getDisplayName() {
                 return instanceName;
@@ -52,6 +59,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             public Image getIcon(int type) {
                 return ImageUtilities.loadImage(ICON);
             }
+
             @Override
             public String getDisplayName() {
                 return instanceName;
@@ -69,7 +77,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             return customizer;
         }
     }
-    
+
     @Override
     public String getDisplayName() {
         return instanceName;
@@ -87,7 +95,19 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 
     @Override
     public void remove() {
-        //Here, remove the instance from the provider
+        this.provider.getInstances().remove(serverInstance);
     }
-    
+
+    public void run() {
+        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.RUN);
+    }
+
+    public void debug() {
+        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.DEBUG);
+    }
+
+    public void stop() {
+        serverUtils.stopServer(serverInfo);
+    }
+
 }
