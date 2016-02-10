@@ -1,1 +1,1 @@
-# NetBeans plugin for Liberty
+# NetBeans Plugin for Liberty
