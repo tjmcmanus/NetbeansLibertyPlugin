@@ -56,10 +56,28 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
             @Override
             public Action[] getActions(boolean context) {
                 return new Action[]{
-                    new AbstractAction("Run") {
+                    new AbstractAction("Start") {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             run();
+                        }
+                    },
+                    new AbstractAction("Start in Debug Mode") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            debug();
+                        }
+                    },
+                    new AbstractAction("Start in Profile Mode") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            throw new UnsupportedOperationException();
+                        }
+                    },
+                    new AbstractAction("Restart") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            throw new UnsupportedOperationException();
                         }
                     },
                     new AbstractAction("Stop") {
@@ -68,10 +86,16 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
                             stop();
                         }
                     },
-                    new AbstractAction("Debug") {
+                    new AbstractAction("Refresh") {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            debug();
+                            throw new UnsupportedOperationException();
+                        }
+                    },
+                    new AbstractAction("Remove") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            remove();
                         }
                     }
                 };
