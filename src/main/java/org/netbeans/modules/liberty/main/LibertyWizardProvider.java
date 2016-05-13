@@ -20,12 +20,12 @@ public class LibertyWizardProvider implements ServerWizardProvider {
 
     @Override
     public String getDisplayName() {
-        return "Liberty";
+        return "WebSphere Liberty";
     }
 
     @Override
     public InstantiatingIterator getInstantiatingIterator() {
-        return new LibertyWizardIterator("Liberty");
+        return new LibertyWizardIterator("WebSphere Liberty");
     }
 
     private static class LibertyWizardIterator implements InstantiatingIterator {
