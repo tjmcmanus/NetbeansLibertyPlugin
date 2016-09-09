@@ -50,7 +50,7 @@ public class LibertyWizardProvider implements ServerWizardProvider {
         @Override
         public synchronized Panel current() {
             if (panel == null) {
-                panel = new LibertyWizardPanel(name);
+                panel = new LibertyWizardPanel();
             }
             return panel;
         }
@@ -93,18 +93,12 @@ public class LibertyWizardProvider implements ServerWizardProvider {
 
     private static class LibertyWizardPanel implements Panel {
 
-        private final String name;
-        private JPanel panel;
-
-        public LibertyWizardPanel(String name) {
-            this.name = name;
-        }
+        private LibertyInstanceManagerPanel panel;
 
         @Override
         public synchronized Component getComponent() {
             if (panel == null) {
-                panel = new JPanel();
-                panel.add(new JLabel(name));
+                panel = new LibertyInstanceManagerPanel();
             }
             return panel;
         }

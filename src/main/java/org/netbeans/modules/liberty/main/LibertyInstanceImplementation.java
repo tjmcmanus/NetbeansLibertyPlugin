@@ -23,7 +23,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     private final String instanceName;
     private final boolean removable;
     private ServerInstance serverInstance;
-    private JPanel customizer;
+    private LibertyInstanceManagerPanel customizer;
     private final ServerInfo serverInfo;
     private final ServerUtils serverUtils = new ServerUtils();
 
@@ -122,8 +122,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     public JComponent getCustomizer() {
         synchronized (this) {
             if (customizer == null) {
-                customizer = new JPanel();
-                customizer.add(new JLabel(instanceName));
+                customizer = new LibertyInstanceManagerPanel();
             }
             return customizer;
         }
