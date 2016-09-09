@@ -13,6 +13,11 @@ import org.openide.WizardDescriptor.InstantiatingIterator;
 import org.openide.WizardDescriptor.Panel;
 import org.openide.util.HelpCtx;
 
+/**
+ * Provides wizard in Server Manager under Tools menu.
+ * Registered in layer.xml file.
+ * @author gwieleng
+ */
 public class LibertyWizardProvider implements ServerWizardProvider {
 
     public LibertyWizardProvider() {
