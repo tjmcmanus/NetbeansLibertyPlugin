@@ -8,6 +8,11 @@ package org.netbeans.modules.liberty.main;
 
 import java.io.File;
 
+/**
+ * Model for server instance,
+ * to be visualized via #LibertyInstanceImplementation
+ * @author Elson Yuen
+ */
 public class ServerInfo {
 
     private File userDir = null;

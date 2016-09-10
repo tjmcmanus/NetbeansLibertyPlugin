@@ -36,6 +36,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+
 public class ServerConfigurationFile {
   protected URI uri;
   protected long lastModified = -1;

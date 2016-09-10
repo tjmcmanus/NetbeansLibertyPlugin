@@ -3,6 +3,7 @@ package org.netbeans.modules.liberty.main;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -15,7 +16,12 @@ import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
 import org.openide.nodes.Node;
 import org.openide.util.ImageUtilities;
+import org.openide.util.Utilities;
 
+/**
+ * Visual representation of an instance in the Services window
+ * @author gwieleng & sknitelius
+ */
 public final class LibertyInstanceImplementation implements ServerInstanceImplementation {
 
     private final LibertyInstanceProvider provider;
@@ -55,50 +61,53 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 
             @Override
             public Action[] getActions(boolean context) {
-                return new Action[]{
-                    new AbstractAction("Start") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            run();
-                        }
-                    },
-                    new AbstractAction("Start in Debug Mode") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            debug();
-                        }
-                    },
-                    new AbstractAction("Start in Profile Mode") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            throw new UnsupportedOperationException();
-                        }
-                    },
-                    new AbstractAction("Restart") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            throw new UnsupportedOperationException();
-                        }
-                    },
-                    new AbstractAction("Stop") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            stop();
-                        }
-                    },
-                    new AbstractAction("Refresh") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            throw new UnsupportedOperationException();
-                        }
-                    },
-                    new AbstractAction("Remove") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            remove();
-                        }
-                    }
-                };
+                List<? extends Action> libertyInstanceActions = Utilities.actionsForPath("Servers/Liberty/Actions");
+                return libertyInstanceActions.toArray(new Action[libertyInstanceActions.size()]);
+                
+//                return new Action[]{
+//                    new AbstractAction("Start") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            run();
+//                        }
+//                    },
+//                    new AbstractAction("Start in Debug Mode") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            debug();
+//                        }
+//                    },
+//                    new AbstractAction("Start in Profile Mode") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            throw new UnsupportedOperationException();
+//                        }
+//                    },
+//                    new AbstractAction("Restart") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            throw new UnsupportedOperationException();
+//                        }
+//                    },
+//                    new AbstractAction("Stop") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            stop();
+//                        }
+//                    },
+//                    new AbstractAction("Refresh") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            throw new UnsupportedOperationException();
+//                        }
+//                    },
+//                    new AbstractAction("Remove") {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            remove();
+//                        }
+//                    }
+//                };
             }
         };
     }

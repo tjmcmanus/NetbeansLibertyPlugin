@@ -10,6 +10,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Utilities for starting and stopping the server instance,
+ * to be invoked from actions on server instance node.
+ * @author Elson Yuen
+ */
 public class ServerUtils {
 
     public static final String BATCH_SCRIPT = "server";
