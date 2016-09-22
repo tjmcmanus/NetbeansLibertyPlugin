@@ -88,6 +88,9 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
         locationChooser.setManagerPanel(this);
     }//GEN-LAST:event_browseButtonActionPerformed
 
+    public void setLibertyLocation(String location) {
+      locationLabel.setText(location);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton browseButton;
