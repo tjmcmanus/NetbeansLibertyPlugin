@@ -1,7 +1,21 @@
+/*
+ * Copyright 2016 Netbeans Liberty Plugin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.netbeans.modules.liberty.main.tests;
 
 import java.io.File;
-
 import org.netbeans.modules.liberty.main.ServerInfo;
 import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.ServerUtils.ServerMode;
@@ -16,7 +30,7 @@ public class ServerControlTest {
   	
   	File javaHome = new File("C:\\myJDKPath\\sdk");
   	
-  	ServerInfo serverInfo = new ServerInfo(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort);
+  	ServerInfo serverInfo = new ServerInfo(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
   	
   	ServerUtils serverUtil = new ServerUtils();
   	Process p = serverUtil.startServer(serverInfo, ServerMode.RUN);

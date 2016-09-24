@@ -19,6 +19,10 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo1">
+    </Component>
+    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo2">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="1"/>
@@ -76,11 +80,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="installationLocation">
-      <Properties>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="org/netbeans/modules/liberty/main/Bundle.properties" key="LibertyInstanceManagerPanel.installationLocation.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-        </Property>
-      </Properties>
+      <BindingProperties>
+        <BindingProperty name="text" source="serverInfo1" sourcePath="${serverLocation}" target="installationLocation" targetPath="text" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
     </Component>
     <Component class="javax.swing.JButton" name="browseButton">
       <Properties>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -40,6 +44,12 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JFileChooser" name="libertyLocationChoser">
+      <Properties>
+        <Property name="fileSelectionMode" type="int" value="1"/>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="selectedFile" source="serverInfo1" sourcePath="${runtimeLocation}" target="libertyLocationChoser" targetPath="selectedFile" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="libertyLocationChoserActionPerformed"/>
       </Events>

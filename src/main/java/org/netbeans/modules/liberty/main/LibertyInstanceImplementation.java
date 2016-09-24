@@ -1,14 +1,24 @@
+/*
+ * Copyright 2016 Netbeans Liberty Plugin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.io.File;
 import java.util.List;
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.api.server.ServerInstance;
 import org.netbeans.spi.server.ServerInstanceImplementation;
@@ -20,14 +30,12 @@ import org.openide.util.Utilities;
 
 /**
  * Visual representation of an instance in the Services window
+ *
  * @author gwieleng & sknitelius
  */
 public final class LibertyInstanceImplementation implements ServerInstanceImplementation {
 
     private final LibertyInstanceProvider provider;
-    private final String serverName;
-    private final String instanceName;
-    private final boolean removable;
     private ServerInstance serverInstance;
     private LibertyInstanceManagerPanel customizer;
     private final ServerInfo serverInfo;
@@ -36,14 +44,9 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
     @StaticResource
     private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
 
-    public LibertyInstanceImplementation(LibertyInstanceProvider provider, String serverName, String instanceName, String runtimeLocation, boolean removable) {
+    public LibertyInstanceImplementation(LibertyInstanceProvider provider, ServerInfo serverInfo) {
         this.provider = provider;
-        this.serverName = serverName;
-        this.instanceName = instanceName;
-        this.removable = removable;
-
-        File userDir = new File(runtimeLocation + "\\usr");
-        this.serverInfo = new ServerInfo(userDir, null, serverName, runtimeLocation, new File(System.getProperty("java.home")), 7777);
+        this.serverInfo = serverInfo;
     }
 
     @Override
@@ -56,14 +59,14 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 
             @Override
             public String getDisplayName() {
-                return instanceName;
+                return serverInfo.getInstanceName();
             }
 
             @Override
             public Action[] getActions(boolean context) {
                 List<? extends Action> libertyInstanceActions = Utilities.actionsForPath("Servers/Liberty/Actions");
                 return libertyInstanceActions.toArray(new Action[libertyInstanceActions.size()]);
-                
+
 //                return new Action[]{
 //                    new AbstractAction("Start") {
 //                        @Override
@@ -122,7 +125,7 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 
             @Override
             public String getDisplayName() {
-                return instanceName;
+                return serverInfo.getInstanceName();
             }
         };
     }
@@ -139,17 +142,17 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 
     @Override
     public String getDisplayName() {
-        return instanceName;
+        return serverInfo.getInstanceName();
     }
 
     @Override
     public String getServerDisplayName() {
-        return serverName;
+        return serverInfo.getServerName();
     }
 
     @Override
     public boolean isRemovable() {
-        return removable;
+        return serverInfo.isRemovable();
     }
 
     @Override
