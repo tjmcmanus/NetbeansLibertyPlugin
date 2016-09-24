@@ -35,37 +35,37 @@ import org.openide.util.Utilities;
  */
 public final class LibertyInstanceImplementation implements ServerInstanceImplementation {
 
-  private final LibertyInstanceProvider provider;
-  private ServerInstance serverInstance;
-  private LibertyInstanceManagerPanel customizer;
-  private final ServerInfo serverInfo;
-  private final ServerUtils serverUtils = new ServerUtils();
+    private final LibertyInstanceProvider provider;
+    private ServerInstance serverInstance;
+    private LibertyInstanceManagerPanel customizer;
+    private final ServerInfo serverInfo;
+    private final ServerUtils serverUtils = new ServerUtils();
 
-  @StaticResource
-  private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
+    @StaticResource
+    private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
 
-  public LibertyInstanceImplementation(LibertyInstanceProvider provider, ServerInfo serverInfo) {
-    this.provider = provider;
-    this.serverInfo = serverInfo;
-  }
+    public LibertyInstanceImplementation(LibertyInstanceProvider provider, ServerInfo serverInfo) {
+        this.provider = provider;
+        this.serverInfo = serverInfo;
+    }
 
-  @Override
-  public Node getFullNode() {
-    return new AbstractNode(Children.LEAF) {
-      @Override
-      public Image getIcon(int type) {
-        return ImageUtilities.loadImage(ICON);
-      }
+    @Override
+    public Node getFullNode() {
+        return new AbstractNode(Children.LEAF) {
+            @Override
+            public Image getIcon(int type) {
+                return ImageUtilities.loadImage(ICON);
+            }
 
-      @Override
-      public String getDisplayName() {
-        return serverInfo.getInstanceName();
-      }
+            @Override
+            public String getDisplayName() {
+                return serverInfo.getInstanceName();
+            }
 
-      @Override
-      public Action[] getActions(boolean context) {
-        List<? extends Action> libertyInstanceActions = Utilities.actionsForPath("Servers/Liberty/Actions");
-        return libertyInstanceActions.toArray(new Action[libertyInstanceActions.size()]);
+            @Override
+            public Action[] getActions(boolean context) {
+                List<? extends Action> libertyInstanceActions = Utilities.actionsForPath("Servers/Liberty/Actions");
+                return libertyInstanceActions.toArray(new Action[libertyInstanceActions.size()]);
 
 //                return new Action[]{
 //                    new AbstractAction("Start") {
@@ -111,65 +111,65 @@ public final class LibertyInstanceImplementation implements ServerInstanceImplem
 //                        }
 //                    }
 //                };
-      }
-    };
-  }
-
-  @Override
-  public Node getBasicNode() {
-    return new AbstractNode(Children.LEAF) {
-      @Override
-      public Image getIcon(int type) {
-        return ImageUtilities.loadImage(ICON);
-      }
-
-      @Override
-      public String getDisplayName() {
-        return serverInfo.getInstanceName();
-      }
-    };
-  }
-
-  @Override
-  public JComponent getCustomizer() {
-    synchronized (this) {
-      if (customizer == null) {
-        customizer = new LibertyInstanceManagerPanel();
-      }
-      return customizer;
+            }
+        };
     }
-  }
 
-  @Override
-  public String getDisplayName() {
-    return serverInfo.getInstanceName();
-  }
+    @Override
+    public Node getBasicNode() {
+        return new AbstractNode(Children.LEAF) {
+            @Override
+            public Image getIcon(int type) {
+                return ImageUtilities.loadImage(ICON);
+            }
 
-  @Override
-  public String getServerDisplayName() {
-    return serverInfo.getServerName();
-  }
+            @Override
+            public String getDisplayName() {
+                return serverInfo.getInstanceName();
+            }
+        };
+    }
 
-  @Override
-  public boolean isRemovable() {
-    return serverInfo.isRemovable();
-  }
+    @Override
+    public JComponent getCustomizer() {
+        synchronized (this) {
+            if (customizer == null) {
+                customizer = new LibertyInstanceManagerPanel();
+            }
+            return customizer;
+        }
+    }
 
-  @Override
-  public void remove() {
-    this.provider.getInstances().remove(serverInstance);
-  }
+    @Override
+    public String getDisplayName() {
+        return serverInfo.getInstanceName();
+    }
 
-  public void run() {
-    serverUtils.startServer(serverInfo, ServerUtils.ServerMode.RUN);
-  }
+    @Override
+    public String getServerDisplayName() {
+        return serverInfo.getServerName();
+    }
 
-  public void debug() {
-    serverUtils.startServer(serverInfo, ServerUtils.ServerMode.DEBUG);
-  }
+    @Override
+    public boolean isRemovable() {
+        return serverInfo.isRemovable();
+    }
 
-  public void stop() {
-    serverUtils.stopServer(serverInfo);
-  }
+    @Override
+    public void remove() {
+        this.provider.getInstances().remove(serverInstance);
+    }
+
+    public void run() {
+        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.RUN);
+    }
+
+    public void debug() {
+        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.DEBUG);
+    }
+
+    public void stop() {
+        serverUtils.stopServer(serverInfo);
+    }
 
 }

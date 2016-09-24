@@ -19,9 +19,9 @@ import java.io.File;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Model for server instance,
- * to be visualized via #LibertyInstanceImplementation
- * 
+ * Model for server instance, to be visualized via
+ * #LibertyInstanceImplementation
+ *
  * @author Elson Yuen, Stephan Knitelius
  */
 @XmlRootElement
@@ -36,9 +36,10 @@ public class ServerInfo {
     private String runtimeLocation = null;
     private File javaHome = null;
     private boolean removable = true;
-    
-    public ServerInfo() {}
-    
+
+    public ServerInfo() {
+    }
+
     public ServerInfo(File userDir, File serverOutputPath, String serverName, String runtimeLocation, File javaHome,
             int debugPort, boolean removable) {
         this.userDir = userDir;
@@ -55,29 +56,29 @@ public class ServerInfo {
         this.removable = removable;
     }
 
-  public void setUserDir(File userDir) {
-    this.userDir = userDir;
-  }
+    public void setUserDir(File userDir) {
+        this.userDir = userDir;
+    }
 
-  public void setServerOutputPath(File serverOutputPath) {
-    this.serverOutputPath = serverOutputPath;
-  }
+    public void setServerOutputPath(File serverOutputPath) {
+        this.serverOutputPath = serverOutputPath;
+    }
 
-  public void setServerName(String serverName) {
-    this.serverName = serverName;
-  }
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
+    }
 
-  public void setDebugPort(int debugPort) {
-    this.debugPort = debugPort;
-  }
+    public void setDebugPort(int debugPort) {
+        this.debugPort = debugPort;
+    }
 
-  public void setRuntimeLocation(String runtimeLocation) {
-    this.runtimeLocation = runtimeLocation;
-  }
+    public void setRuntimeLocation(String runtimeLocation) {
+        this.runtimeLocation = runtimeLocation;
+    }
 
-  public void setJavaHome(File javaHome) {
-    this.javaHome = javaHome;
-  }
+    public void setJavaHome(File javaHome) {
+        this.javaHome = javaHome;
+    }
 
     public int getDebugPort() {
         return debugPort;
@@ -102,11 +103,11 @@ public class ServerInfo {
     public String getRuntimeLocation() {
         return runtimeLocation;
     }
-    
+
     public boolean isRemovable() {
         return removable;
     }
-    
+
     public void setRemovable(boolean removable) {
         this.removable = removable;
     }
@@ -116,6 +117,6 @@ public class ServerInfo {
     }
 
     public void setInstanceName(String instanceName) {
-      this.instanceName = instanceName;
+        this.instanceName = instanceName;
     }
 }
