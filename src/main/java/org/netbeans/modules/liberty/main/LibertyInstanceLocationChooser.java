@@ -1,5 +1,17 @@
 /*
- * Popup to chose the location of the Liberty Instance.
+ * Copyright 2016 Netbeans Liberty Plugin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.netbeans.modules.liberty.main;
 
@@ -17,8 +29,9 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
   /**
    * Creates new form LibertyInstanceLocationChooser
    */
-  public LibertyInstanceLocationChooser(java.awt.Frame parent, boolean modal) {
+  public LibertyInstanceLocationChooser(java.awt.Frame parent, boolean modal, ServerInfo serverInfo) {
     super(parent, modal);
+    this.serverInfo1 = serverInfo;
     initComponents();
     setAlwaysOnTop(true);
     setVisible(true);
@@ -32,12 +45,18 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
+    bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+    serverInfo1 = new org.netbeans.modules.liberty.main.ServerInfo();
     libertyLocationChoser = new javax.swing.JFileChooser();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     libertyLocationChoser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
+
+    org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, serverInfo1, org.jdesktop.beansbinding.ELProperty.create("${runtimeLocation}"), libertyLocationChoser, org.jdesktop.beansbinding.BeanProperty.create("selectedFile"));
+    bindingGroup.addBinding(binding);
+
     libertyLocationChoser.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         libertyLocationChoserActionPerformed(evt);
@@ -59,6 +78,8 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
         .addGap(0, 0, Short.MAX_VALUE))
     );
 
+    bindingGroup.bind();
+
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
@@ -69,6 +90,8 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JFileChooser libertyLocationChoser;
+  private org.netbeans.modules.liberty.main.ServerInfo serverInfo1;
+  private org.jdesktop.beansbinding.BindingGroup bindingGroup;
   // End of variables declaration//GEN-END:variables
 
   public void setManagerPanel(LibertyInstanceManagerPanel managerPanel) {
