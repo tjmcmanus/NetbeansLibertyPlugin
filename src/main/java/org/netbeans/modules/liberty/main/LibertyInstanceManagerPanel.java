@@ -16,10 +16,10 @@
 package org.netbeans.modules.liberty.main;
 
 /**
- * Panel in Server Manager under Tools menu
- * and in Project Properties of instance in Services window
- * for registering instances, seeing properties, etc.
- * 
+ * Panel in Server Manager under Tools menu and in Project Properties of
+ * instance in Services window for registering instances, seeing properties,
+ * etc.
+ *
  * @author gwieleng & sknitelius
  */
 public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
@@ -110,7 +110,7 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_browseButtonActionPerformed
 
     public void setLibertyLocation(String location) {
-      locationLabel.setText(location);
+        locationLabel.setText(location);
     }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -20,9 +20,9 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Utilities for starting and stopping the server instance,
- * to be invoked from actions on server instance node.
- * 
+ * Utilities for starting and stopping the server instance, to be invoked from
+ * actions on server instance node.
+ *
  * @author Elson Yuen
  */
 public class ServerUtils {
@@ -164,7 +164,8 @@ public class ServerUtils {
     }
 
     /**
-     * Create a process builder for launching "wlp/bin/server [option] serverName" with the given arguments.
+     * Create a process builder for launching "wlp/bin/server [option]
+     * serverName" with the given arguments.
      *
      * @param option
      * @param server a server

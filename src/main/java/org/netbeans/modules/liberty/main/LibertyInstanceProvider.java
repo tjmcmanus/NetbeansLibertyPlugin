@@ -15,7 +15,6 @@
  */
 package org.netbeans.modules.liberty.main;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.ChangeListener;
@@ -23,8 +22,8 @@ import org.netbeans.api.server.ServerInstance;
 import org.netbeans.spi.server.ServerInstanceProvider;
 
 /**
- * Provides instance in Services window.
- * Registered in layer.xml file.
+ * Provides instance in Services window. Registered in layer.xml file.
+ *
  * @author gwieleng
  */
 public class LibertyInstanceProvider implements ServerInstanceProvider {
@@ -36,18 +35,16 @@ public class LibertyInstanceProvider implements ServerInstanceProvider {
     @Override
     public List<ServerInstance> getInstances() {
         List<ServerInstance> instances = new ArrayList<ServerInstance>();
-        
+
         //TODO: Listen to registration entries created in user directory
         //using FileChangeListener and refresh here
         //to create an instance:
         //Dummy implementation
-        
-        ServerInfo serverInfo = new ServerInfo(new File(TEST_RUNTIME_LOC + "\\usr"), null, TEST_SERVER_NAME, TEST_RUNTIME_LOC, 
-                new File(System.getProperty("java.home")), 7777, true);
+//        ServerInfo serverInfo = new ServerInfo(new File(TEST_RUNTIME_LOC + "\\usr"), null, TEST_SERVER_NAME, TEST_RUNTIME_LOC,
+//                new File(System.getProperty("java.home")), 7777, true);
 //        ServerInstance instance = ServerInstanceFactory.createServerInstance(
 //                new LibertyInstanceImplementation(this, serverInfo));
 //        instances.add(instance);
-        
 
         return instances;
     }
