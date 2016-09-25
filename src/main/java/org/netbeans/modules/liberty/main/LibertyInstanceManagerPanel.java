@@ -15,6 +15,13 @@
  */
 package org.netbeans.modules.liberty.main;
 
+import java.io.File;
+import org.openide.cookies.OpenCookie;
+import org.openide.filesystems.FileChooserBuilder;
+import org.openide.filesystems.FileObject;
+import org.openide.filesystems.FileUtil;
+import org.openide.util.Exceptions;
+
 /**
  * Panel in Server Manager under Tools menu and in Project Properties of
  * instance in Services window for registering instances, seeing properties,
@@ -104,9 +111,17 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
     private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButtonActionPerformed
-        // TODO open file browser for Liberty location selection.
-        LibertyInstanceLocationChooser locationChooser = new LibertyInstanceLocationChooser(jFrame1, true, serverInfo1);
-        locationChooser.setManagerPanel(this);
+        //The default dir to use if no value is stored
+        File home = new File(System.getProperty("user.home"));
+        //Now build a file chooser and invoke the dialog in one line of code
+        //"user-dir" is our unique key
+        File toAdd = new FileChooserBuilder("user-dir").setTitle("Open File").
+                setDefaultWorkingDirectory(home).setApproveText("Open").showOpenDialog();
+        //Result will be null if the user clicked cancel or closed the dialog w/o OK
+        if (toAdd != null) {
+            FileObject fo = FileUtil.toFileObject(toAdd);
+            installationLocation.setText(fo.getPath());
+        }
     }//GEN-LAST:event_browseButtonActionPerformed
 
     public void setLibertyLocation(String location) {
