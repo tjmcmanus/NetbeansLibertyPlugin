@@ -17,18 +17,10 @@
 package org.netbeans.modules.liberty.main;
 
 import org.netbeans.modules.liberty.main.ui.LibertyWizardComponent;
-import java.awt.Image;
-import java.util.List;
-import javax.swing.Action;
 import javax.swing.JComponent;
-import org.netbeans.api.annotations.common.StaticResource;
 import org.netbeans.api.server.ServerInstance;
 import org.netbeans.spi.server.ServerInstanceImplementation;
-import org.openide.nodes.AbstractNode;
-import org.openide.nodes.Children;
 import org.openide.nodes.Node;
-import org.openide.util.ImageUtilities;
-import org.openide.util.Utilities;
 
 /**
  * Visual representation of an instance in the Services window
@@ -40,106 +32,22 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
     private final LibertyServerInstanceProvider provider;
     private ServerInstance serverInstance;
     private LibertyWizardComponent customizer;
-    private final LibertyInstance serverInfo;
+    private final LibertyInstance instance;
     private final ServerUtils serverUtils = new ServerUtils();
 
-    @StaticResource
-    private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
-
-    public LibertyServerInstanceImplementation(LibertyServerInstanceProvider provider, LibertyInstance serverInfo) {
+    public LibertyServerInstanceImplementation(LibertyServerInstanceProvider provider, LibertyInstance instance) {
         this.provider = provider;
-        this.serverInfo = serverInfo;
+        this.instance = instance;
     }
-
+    
     @Override
     public Node getFullNode() {
-        return new AbstractNode(Children.LEAF) {
-            @Override
-            public Image getIcon(int type) {
-                return ImageUtilities.loadImage(ICON);
-            }
-
-            @Override
-            public String getShortDescription() {
-                return serverInfo.getInstanceName();
-            }
-            
-            @Override
-            public String getDisplayName() {
-                return serverInfo.getUserDir().getPath();
-            }
-
-            @Override
-            public Action[] getActions(boolean context) {
-                List<? extends Action> libertyInstanceActions = Utilities.actionsForPath("Servers/Liberty/Actions");
-                return libertyInstanceActions.toArray(new Action[libertyInstanceActions.size()]);
-
-//                return new Action[]{
-//                    new AbstractAction("Start") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            run();
-//                        }
-//                    },
-//                    new AbstractAction("Start in Debug Mode") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            debug();
-//                        }
-//                    },
-//                    new AbstractAction("Start in Profile Mode") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            throw new UnsupportedOperationException();
-//                        }
-//                    },
-//                    new AbstractAction("Restart") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            throw new UnsupportedOperationException();
-//                        }
-//                    },
-//                    new AbstractAction("Stop") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            stop();
-//                        }
-//                    },
-//                    new AbstractAction("Refresh") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            throw new UnsupportedOperationException();
-//                        }
-//                    },
-//                    new AbstractAction("Remove") {
-//                        @Override
-//                        public void actionPerformed(ActionEvent e) {
-//                            remove();
-//                        }
-//                    }
-//                };
-            }
-        };
+        return getBasicNode();
     }
 
     @Override
     public Node getBasicNode() {
-        return new AbstractNode(Children.LEAF) {
-            @Override
-            public Image getIcon(int type) {
-                return ImageUtilities.loadImage(ICON);
-            }
-
-            @Override
-            public String getShortDescription() {
-                return serverInfo.getInstanceName();
-            }
-            
-            @Override
-            public String getDisplayName() {
-                return serverInfo.getUserDir().getPath();
-            }
-        };
+        return new LibertyInstanceNode(instance);
     }
 
     @Override
@@ -154,17 +62,17 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
 
     @Override
     public String getDisplayName() {
-        return serverInfo.getInstanceName();
+        return instance.getInstanceName();
     }
 
     @Override
     public String getServerDisplayName() {
-        return serverInfo.getServerName();
+        return instance.getServerName();
     }
 
     @Override
     public boolean isRemovable() {
-        return serverInfo.isRemovable();
+        return instance.isRemovable();
     }
 
     @Override
@@ -173,15 +81,15 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
     }
 
     public void run() {
-        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.RUN);
+        serverUtils.startServer(instance, ServerUtils.ServerMode.RUN);
     }
 
     public void debug() {
-        serverUtils.startServer(serverInfo, ServerUtils.ServerMode.DEBUG);
+        serverUtils.startServer(instance, ServerUtils.ServerMode.DEBUG);
     }
 
     public void stop() {
-        serverUtils.stopServer(serverInfo);
+        serverUtils.stopServer(instance);
     }
 
 }
