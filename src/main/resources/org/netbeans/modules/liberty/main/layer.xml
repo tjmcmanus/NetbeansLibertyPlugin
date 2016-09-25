@@ -4,11 +4,11 @@
     
     <folder name="Servers">
         <file name="LibertyInstanceProvider.instance">
-            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.main.LibertyInstanceProvider"/>
+            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.main.LibertyServerInstanceProvider"/>
             <attr name="instanceOf" stringvalue="org.netbeans.spi.server.ServerInstanceProvider"/>
         </file>
         <file name="LibertyWizardProvider.instance">
-            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.main.LibertyWizardProvider"/>
+            <attr name="instanceClass" stringvalue="org.netbeans.modules.liberty.main.LibertyServerWizardProvider"/>
             <attr name="instanceOf" stringvalue="org.netbeans.spi.server.ServerWizardProvider"/>
         </file>
     </folder>

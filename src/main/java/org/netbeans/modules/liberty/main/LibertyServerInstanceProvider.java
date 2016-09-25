@@ -26,7 +26,7 @@ import org.netbeans.spi.server.ServerInstanceProvider;
  *
  * @author gwieleng
  */
-public class LibertyInstanceProvider implements ServerInstanceProvider {
+public class LibertyServerInstanceProvider implements ServerInstanceProvider {
 
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
 
