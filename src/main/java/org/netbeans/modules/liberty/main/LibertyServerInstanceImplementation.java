@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Image;
@@ -57,6 +58,11 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
                 return ImageUtilities.loadImage(ICON);
             }
 
+            @Override
+            public String getShortDescription() {
+                return serverInfo.getUserDir().getPath();
+            }
+            
             @Override
             public String getDisplayName() {
                 return serverInfo.getInstanceName();
@@ -123,6 +129,11 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
                 return ImageUtilities.loadImage(ICON);
             }
 
+            @Override
+            public String getShortDescription() {
+                return serverInfo.getUserDir().getPath();
+            }
+            
             @Override
             public String getDisplayName() {
                 return serverInfo.getInstanceName();

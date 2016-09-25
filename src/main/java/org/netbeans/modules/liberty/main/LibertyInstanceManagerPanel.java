@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.netbeans.modules.liberty.main;
 
 import java.io.File;
@@ -29,6 +30,8 @@ import org.openide.filesystems.FileUtil;
  */
 public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
 
+    private String userDir;
+    
     public LibertyInstanceManagerPanel() {
         initComponents();
     }
@@ -89,10 +92,15 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
         //Result will be null if the user clicked cancel or closed the dialog w/o OK
         if (toAdd != null) {
             FileObject fo = FileUtil.toFileObject(toAdd);
-            installationLocation.setText(fo.getPath());
+            userDir = fo.getPath();
+            installationLocation.setText(userDir);
         }
     }//GEN-LAST:event_browseButtonActionPerformed
 
+    public String getUserDir() {
+        return userDir;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton browseButton;
     private javax.swing.JTextField installationLocation;
