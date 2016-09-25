@@ -29,7 +29,7 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
     /**
      * Creates new form LibertyInstanceLocationChooser
      */
-    public LibertyInstanceLocationChooser(java.awt.Frame parent, boolean modal, ServerInfo serverInfo) {
+    public LibertyInstanceLocationChooser(java.awt.Frame parent, boolean modal, LibertyInstance serverInfo) {
         super(parent, modal);
         this.serverInfo1 = serverInfo;
         initComponents();
@@ -47,7 +47,7 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
   private void initComponents() {
     bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-    serverInfo1 = new org.netbeans.modules.liberty.main.ServerInfo();
+    serverInfo1 = new org.netbeans.modules.liberty.main.LibertyInstance();
     libertyLocationChoser = new javax.swing.JFileChooser();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,7 +90,7 @@ public class LibertyInstanceLocationChooser extends javax.swing.JDialog {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JFileChooser libertyLocationChoser;
-  private org.netbeans.modules.liberty.main.ServerInfo serverInfo1;
+  private org.netbeans.modules.liberty.main.LibertyInstance serverInfo1;
   private org.jdesktop.beansbinding.BindingGroup bindingGroup;
   // End of variables declaration//GEN-END:variables
 

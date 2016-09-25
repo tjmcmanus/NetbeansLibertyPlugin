@@ -38,13 +38,13 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
     private final LibertyServerInstanceProvider provider;
     private ServerInstance serverInstance;
     private LibertyInstanceManagerPanel customizer;
-    private final ServerInfo serverInfo;
+    private final LibertyInstance serverInfo;
     private final ServerUtils serverUtils = new ServerUtils();
 
     @StaticResource
     private static final String ICON = "org/netbeans/modules/liberty/main/logo.png";
 
-    public LibertyServerInstanceImplementation(LibertyServerInstanceProvider provider, ServerInfo serverInfo) {
+    public LibertyServerInstanceImplementation(LibertyServerInstanceProvider provider, LibertyInstance serverInfo) {
         this.provider = provider;
         this.serverInfo = serverInfo;
     }

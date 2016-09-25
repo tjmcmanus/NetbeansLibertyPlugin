@@ -54,7 +54,7 @@ public class ServerUtils {
 
         File javaHome = new File("C:\\myJDKPath\\sdk");
 
-        ServerInfo serverInfo = new ServerInfo(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
+        LibertyInstance serverInfo = new LibertyInstance(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
 
         ServerUtils serverUtil = new ServerUtils();
         Process p = serverUtil.startServer(serverInfo, ServerMode.RUN);
@@ -92,7 +92,7 @@ public class ServerUtils {
      * @param mode start mode of the server
      * @return true if launch is successful; otherwise, return false.
      */
-    public Process startServer(ServerInfo curServerInfo, ServerMode mode) {
+    public Process startServer(LibertyInstance curServerInfo, ServerMode mode) {
 
         ProcessBuilder pb = createProcessBuilder(mode.getValue(), curServerInfo);
 
@@ -143,7 +143,7 @@ public class ServerUtils {
      * @param curServerInfo server information for starting the server.
      * @return true if launch is successful; otherwise, return false.
      */
-    public Process stopServer(ServerInfo curServerInfo) {
+    public Process stopServer(LibertyInstance curServerInfo) {
 
         ProcessBuilder pb = createProcessBuilder("stop", curServerInfo);
 
@@ -172,7 +172,7 @@ public class ServerUtils {
      * @param command command arguments
      * @return the process builder, ready for launch
      */
-    public ProcessBuilder createProcessBuilder(String option, ServerInfo curServerInfo, String... command) {
+    public ProcessBuilder createProcessBuilder(String option, LibertyInstance curServerInfo, String... command) {
         File workDir = curServerInfo.getServerOutputPath();
         if (!workDir.exists()) {
             workDir = curServerInfo.getUserDir();

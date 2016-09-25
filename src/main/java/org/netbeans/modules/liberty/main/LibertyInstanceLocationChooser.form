@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo1">
+    <Component class="org.netbeans.modules.liberty.main.LibertyInstance" name="serverInfo1">
     </Component>
   </NonVisualComponents>
   <Properties>

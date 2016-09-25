@@ -19,9 +19,9 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo1">
+    <Component class="org.netbeans.modules.liberty.main.LibertyInstance" name="serverInfo1">
     </Component>
-    <Component class="org.netbeans.modules.liberty.main.ServerInfo" name="serverInfo2">
+    <Component class="org.netbeans.modules.liberty.main.LibertyInstance" name="serverInfo2">
     </Component>
   </NonVisualComponents>
   <AuxValues>

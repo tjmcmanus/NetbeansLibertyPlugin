@@ -43,8 +43,8 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
 
     jFileChooser1 = new javax.swing.JFileChooser();
     jFrame1 = new javax.swing.JFrame();
-    serverInfo1 = new org.netbeans.modules.liberty.main.ServerInfo();
-    serverInfo2 = new org.netbeans.modules.liberty.main.ServerInfo();
+    serverInfo1 = new org.netbeans.modules.liberty.main.LibertyInstance();
+    serverInfo2 = new org.netbeans.modules.liberty.main.LibertyInstance();
     locationLabel = new javax.swing.JLabel();
     installationLocation = new javax.swing.JTextField();
     browseButton = new javax.swing.JButton();
@@ -119,8 +119,8 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
   private javax.swing.JFileChooser jFileChooser1;
   private javax.swing.JFrame jFrame1;
   private javax.swing.JLabel locationLabel;
-  private org.netbeans.modules.liberty.main.ServerInfo serverInfo1;
-  private org.netbeans.modules.liberty.main.ServerInfo serverInfo2;
+  private org.netbeans.modules.liberty.main.LibertyInstance serverInfo1;
+  private org.netbeans.modules.liberty.main.LibertyInstance serverInfo2;
   private org.jdesktop.beansbinding.BindingGroup bindingGroup;
   // End of variables declaration//GEN-END:variables
 }
