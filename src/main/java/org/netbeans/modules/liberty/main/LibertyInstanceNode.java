@@ -17,10 +17,13 @@
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Image;
+import java.util.LinkedList;
 import javax.swing.Action;
 import org.netbeans.api.annotations.common.StaticResource;
+import org.netbeans.modules.liberty.main.actions.RunLibertyAction;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
+import org.openide.util.actions.SystemAction;
 import org.openide.util.lookup.Lookups;
 
 /**
@@ -53,14 +56,9 @@ public class LibertyInstanceNode extends AbstractNode {
     }
     @Override
     public Action[] getActions(boolean context) {
-        return new Action[] {
-//            SystemAction.get(RefreshAmazonInstanceNodeAction.class),
-//            SystemAction.get(ViewAdminConsoleAction.class),
-//            null,
-//            SystemAction.get(RemoveAmazonInstanceAction.class),
-//            null,
-//            SystemAction.get(PropertiesAction.class)
-        };
+        java.util.List actions = new LinkedList();
+        actions.add(SystemAction.get(RunLibertyAction.class));
+        return (SystemAction[])actions.toArray(new SystemAction[actions.size()]);
     }
 
 }
