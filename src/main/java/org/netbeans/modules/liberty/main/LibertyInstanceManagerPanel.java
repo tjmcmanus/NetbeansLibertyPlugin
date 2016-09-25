@@ -16,11 +16,9 @@
 package org.netbeans.modules.liberty.main;
 
 import java.io.File;
-import org.openide.cookies.OpenCookie;
 import org.openide.filesystems.FileChooserBuilder;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
-import org.openide.util.Exceptions;
 
 /**
  * Panel in Server Manager under Tools menu and in Project Properties of
@@ -38,16 +36,12 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
-
+  
         locationLabel = new javax.swing.JLabel();
         installationLocation = new javax.swing.JTextField();
         browseButton = new javax.swing.JButton();
 
         org.openide.awt.Mnemonics.setLocalizedText(locationLabel, org.openide.util.NbBundle.getMessage(LibertyInstanceManagerPanel.class, "LibertyInstanceManagerPanel.locationLabel.text")); // NOI18N
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new org.netbeans.modules.liberty.main.LibertyInstance(), org.jdesktop.beansbinding.ELProperty.create("${serverLocation}"), installationLocation, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
 
         org.openide.awt.Mnemonics.setLocalizedText(browseButton, org.openide.util.NbBundle.getMessage(LibertyInstanceManagerPanel.class, "LibertyInstanceManagerPanel.browseButton.text")); // NOI18N
         browseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +78,7 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
                 .addContainerGap(240, Short.MAX_VALUE))
         );
 
-        bindingGroup.bind();
+        
     }// </editor-fold>//GEN-END:initComponents
 
     private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButtonActionPerformed
@@ -105,6 +99,5 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
     private javax.swing.JButton browseButton;
     private javax.swing.JTextField installationLocation;
     private javax.swing.JLabel locationLabel;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,9 +57,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="installationLocation">
-      <BindingProperties>
-        <BindingProperty name="text" source="serverInfo1" sourcePath="${serverLocation}" target="installationLocation" targetPath="text" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
     </Component>
     <Component class="javax.swing.JButton" name="browseButton">
       <Properties>
