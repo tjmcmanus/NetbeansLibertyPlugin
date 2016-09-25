@@ -60,12 +60,12 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
 
             @Override
             public String getShortDescription() {
-                return serverInfo.getUserDir().getPath();
+                return serverInfo.getInstanceName();
             }
             
             @Override
             public String getDisplayName() {
-                return serverInfo.getInstanceName();
+                return serverInfo.getUserDir().getPath();
             }
 
             @Override
@@ -131,12 +131,12 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
 
             @Override
             public String getShortDescription() {
-                return serverInfo.getUserDir().getPath();
+                return serverInfo.getInstanceName();
             }
             
             @Override
             public String getDisplayName() {
-                return serverInfo.getInstanceName();
+                return serverInfo.getUserDir().getPath();
             }
         };
     }
