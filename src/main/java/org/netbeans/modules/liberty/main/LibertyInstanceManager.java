@@ -12,7 +12,7 @@ import org.netbeans.spi.server.ServerInstanceFactory;
 import org.openide.util.ChangeSupport;
 
 /**
- * Manager of all Oracle Cloud accounts registered in the IDE (usually just one).
+ * Manager of all Liberty server instances registered in the IDE (usually just one).
  */
 public class LibertyInstanceManager {
 
@@ -119,8 +119,8 @@ public class LibertyInstanceManager {
     }
     
     private static void saveUsernameAndPassword(LibertyInstance ai) {
-//        Keyring.save(PREFIX+USERNAME+"."+ai.getName(), ai.getUser().toCharArray(), "Oracle Cloud Username"); // NOI18N
-//        Keyring.save(PREFIX+PASSWORD+"."+ai.getName(), ai.getPassword().toCharArray(), "Oracle Cloud Password"); // NOI18N
+//        Keyring.save(PREFIX+USERNAME+"."+ai.getName(), ai.getUser().toCharArray(), "Liberty Username"); // NOI18N
+//        Keyring.save(PREFIX+PASSWORD+"."+ai.getName(), ai.getPassword().toCharArray(), "Liberty Password"); // NOI18N
     }
     
     private static List<LibertyInstance> load() {
