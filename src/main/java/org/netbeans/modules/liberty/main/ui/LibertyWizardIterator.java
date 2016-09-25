@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.ui;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 import javax.swing.event.ChangeListener;
+import org.netbeans.modules.liberty.main.LibertyInstance;
+import org.netbeans.modules.liberty.main.LibertyInstanceManager;
 import org.openide.WizardDescriptor;
 import org.openide.WizardDescriptor.Panel;
 

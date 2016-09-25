@@ -16,6 +16,7 @@
 
 package org.netbeans.modules.liberty.main;
 
+import org.netbeans.modules.liberty.main.ui.LibertyWizardComponent;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Action;
@@ -38,7 +39,7 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
 
     private final LibertyServerInstanceProvider provider;
     private ServerInstance serverInstance;
-    private LibertyInstanceManagerPanel customizer;
+    private LibertyWizardComponent customizer;
     private final LibertyInstance serverInfo;
     private final ServerUtils serverUtils = new ServerUtils();
 
@@ -145,7 +146,7 @@ public final class LibertyServerInstanceImplementation implements ServerInstance
     public JComponent getCustomizer() {
         synchronized (this) {
             if (customizer == null) {
-                customizer = new LibertyInstanceManagerPanel();
+                customizer = new LibertyWizardComponent();
             }
             return customizer;
         }

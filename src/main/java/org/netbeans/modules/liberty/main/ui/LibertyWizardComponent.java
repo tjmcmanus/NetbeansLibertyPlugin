@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.ui;
 
 import java.io.File;
 import org.openide.filesystems.FileChooserBuilder;
@@ -28,11 +28,11 @@ import org.openide.filesystems.FileUtil;
  *
  * @author gwieleng & sknitelius
  */
-public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
+public class LibertyWizardComponent extends javax.swing.JPanel {
 
     private String userDir;
     
-    public LibertyInstanceManagerPanel() {
+    public LibertyWizardComponent() {
         initComponents();
     }
 
@@ -44,9 +44,9 @@ public class LibertyInstanceManagerPanel extends javax.swing.JPanel {
         installationLocation = new javax.swing.JTextField();
         browseButton = new javax.swing.JButton();
 
-        org.openide.awt.Mnemonics.setLocalizedText(locationLabel, org.openide.util.NbBundle.getMessage(LibertyInstanceManagerPanel.class, "LibertyWizardComponent.locationLabel.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(locationLabel, org.openide.util.NbBundle.getMessage(LibertyWizardComponent.class, "LibertyWizardComponent.locationLabel.text")); // NOI18N
 
-        org.openide.awt.Mnemonics.setLocalizedText(browseButton, org.openide.util.NbBundle.getMessage(LibertyInstanceManagerPanel.class, "LibertyWizardComponent.browseButton.text")); // NOI18N
+        org.openide.awt.Mnemonics.setLocalizedText(browseButton, org.openide.util.NbBundle.getMessage(LibertyWizardComponent.class, "LibertyWizardComponent.browseButton.text")); // NOI18N
         browseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 browseButtonActionPerformed(evt);

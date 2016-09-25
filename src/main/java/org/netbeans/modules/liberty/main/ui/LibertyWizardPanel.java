@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.ui;
 
 import java.awt.Component;
 import javax.swing.event.ChangeEvent;
@@ -30,7 +30,7 @@ public class LibertyWizardPanel implements WizardDescriptor.AsynchronousValidati
 
     public static final String USERDIR = "userdir"; // String
     
-    private LibertyInstanceManagerPanel component;
+    private LibertyWizardComponent component;
     private ChangeSupport listeners;
     private WizardDescriptor wd = null;
     
@@ -41,7 +41,7 @@ public class LibertyWizardPanel implements WizardDescriptor.AsynchronousValidati
     @Override
     public Component getComponent() {
         if (component == null) {
-            component = new LibertyInstanceManagerPanel();
+            component = new LibertyWizardComponent();
             component.putClientProperty(WizardDescriptor.PROP_CONTENT_SELECTED_INDEX, Integer.valueOf(0));
         }
         return component;

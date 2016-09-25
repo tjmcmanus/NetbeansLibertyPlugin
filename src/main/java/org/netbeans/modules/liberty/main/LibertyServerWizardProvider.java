@@ -16,6 +16,7 @@
 
 package org.netbeans.modules.liberty.main;
 
+import org.netbeans.modules.liberty.main.ui.LibertyWizardIterator;
 import org.netbeans.spi.server.ServerWizardProvider;
 import org.openide.WizardDescriptor.InstantiatingIterator;
 
