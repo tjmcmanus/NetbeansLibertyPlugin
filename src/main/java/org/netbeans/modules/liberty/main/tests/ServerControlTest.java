@@ -16,7 +16,7 @@
 package org.netbeans.modules.liberty.main.tests;
 
 import java.io.File;
-import org.netbeans.modules.liberty.main.ServerInfo;
+import org.netbeans.modules.liberty.main.LibertyInstance;
 import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.ServerUtils.ServerMode;
 
@@ -30,7 +30,7 @@ public class ServerControlTest {
   	
   	File javaHome = new File("C:\\myJDKPath\\sdk");
   	
-  	ServerInfo serverInfo = new ServerInfo(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
+  	LibertyInstance serverInfo = new LibertyInstance(userDir, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
   	
   	ServerUtils serverUtil = new ServerUtils();
   	Process p = serverUtil.startServer(serverInfo, ServerMode.RUN);

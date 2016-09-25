@@ -21,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import org.netbeans.modules.liberty.main.ServerInfo;
+import org.netbeans.modules.liberty.main.LibertyInstance;
 import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.ServerUtils.ServerMode;
 import org.netbeans.modules.liberty.main.config.Constants;
@@ -43,7 +43,7 @@ public class EndToEndServerTest {
   	String warName = "test_app";
   	String warFileLocation = "C:\\test_app.war";
 
-  	ServerInfo serverInfo = new ServerInfo(userDirFile, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
+  	LibertyInstance serverInfo = new LibertyInstance(userDirFile, serverOutputPath, serverName, runtimeLocation, javaHome, debugPort, true);
   	
   	ServerUtils serverUtil = new ServerUtils();
   	Process p = serverUtil.startServer(serverInfo, ServerMode.RUN);

@@ -16,10 +16,12 @@
 package org.netbeans.modules.liberty.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.api.server.ServerInstance;
+import org.netbeans.spi.server.ServerInstanceFactory;
 import org.netbeans.spi.server.ServerInstanceProvider;
 import org.openide.util.ChangeSupport;
 
@@ -38,6 +40,13 @@ public class LibertyServerInstanceProvider implements ServerInstanceProvider, Ch
 
     private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
 
+    private LibertyServerInstanceProvider() {
+        listeners = new ChangeSupport(this);
+        instances = Collections.<ServerInstance>emptyList();
+        LibertyInstanceManager.getDefault().addChangeListener(this);
+        refreshServers();
+    }
+    
     @Override
     public List<ServerInstance> getInstances() {
 
@@ -56,11 +65,11 @@ public class LibertyServerInstanceProvider implements ServerInstanceProvider, Ch
     
     private void refreshServers() {
         List<ServerInstance> servers = new ArrayList<ServerInstance>();
-//        for (OracleInstance ai : OracleInstanceManager.getDefault().getInstances()) {
-//            ServerInstance si = ServerInstanceFactory.createServerInstance(new OracleServerInstanceImplementation(ai));
+        for (LibertyInstance ai : LibertyInstanceManager.getDefault().getInstances()) {
+            ServerInstance si = ServerInstanceFactory.createServerInstance(new LibertyServerInstanceImplementation(this, ai));
 //            ai.setServerInstance(si);
-//            servers.add(si);
-//        }
+            servers.add(si);
+        }
         this.instances = servers;
         listeners.fireChange();
     }

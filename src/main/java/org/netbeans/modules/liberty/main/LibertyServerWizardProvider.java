@@ -16,6 +16,7 @@
 package org.netbeans.modules.liberty.main;
 
 import java.awt.Component;
+import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
@@ -34,6 +35,10 @@ import org.openide.util.HelpCtx;
  */
 public class LibertyServerWizardProvider implements ServerWizardProvider {
 
+    private static final String TEST_SERVER_NAME = "WebSphere Liberty";
+
+    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
+    
     public LibertyServerWizardProvider() {
     }
 
@@ -58,7 +63,16 @@ public class LibertyServerWizardProvider implements ServerWizardProvider {
 
         @Override
         public Set instantiate() throws IOException {
-            return Collections.EMPTY_SET;
+            LibertyInstance instance = new LibertyInstance(
+                    new File(TEST_RUNTIME_LOC + "\\usr"), 
+                    null, 
+                    TEST_SERVER_NAME, 
+                    TEST_RUNTIME_LOC,
+                    new File(System.getProperty("java.home")), 
+                    7777, 
+                    true);
+            LibertyInstanceManager.getDefault().add(instance);
+            return Collections.singleton(instance);
         }
 
         @Override
