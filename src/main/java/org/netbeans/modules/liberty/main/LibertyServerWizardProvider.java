@@ -30,7 +30,6 @@ public class LibertyServerWizardProvider implements ServerWizardProvider {
 
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
 
-    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
     
     public LibertyServerWizardProvider() {
     }

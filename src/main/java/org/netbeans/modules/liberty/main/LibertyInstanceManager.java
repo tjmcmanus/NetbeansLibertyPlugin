@@ -51,7 +51,6 @@ public class LibertyInstanceManager {
    
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
 
-    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
     
     private static final Logger LOG = Logger.getLogger(LibertyInstanceManager.class.getSimpleName());
     
@@ -152,15 +151,15 @@ public class LibertyInstanceManager {
 //            String onPremise = props.getString(ON_PREMISE_SERVICE_INSTANCE_ID, null); // NOI18N
 //            String dataCenter = props.getString(DATA_CENTER, "us1"); // NOI18N
 //            String sdkFolder = CloudSDKHelper.getSDKFolder();
-        LibertyInstance serverInfo = new LibertyInstance(
-                new File(TEST_RUNTIME_LOC + "\\usr"), 
-                null, 
-                TEST_SERVER_NAME, 
-                TEST_RUNTIME_LOC,
-                new File(System.getProperty("java.home")), 
-                7777, 
-                true);
-          result.add(serverInfo);
+//        LibertyInstance serverInfo = new LibertyInstance(
+//                new File(TEST_RUNTIME_LOC + "\\usr"), 
+//                null, 
+//                TEST_SERVER_NAME, 
+//                TEST_RUNTIME_LOC,
+//                new File(System.getProperty("java.home")), 
+//                7777, 
+//                true);
+//          result.add(serverInfo);
         }
         return result;
     }

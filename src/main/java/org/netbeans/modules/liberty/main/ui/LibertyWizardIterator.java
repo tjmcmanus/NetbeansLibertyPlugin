@@ -33,7 +33,7 @@ public class LibertyWizardIterator implements WizardDescriptor.AsynchronousInsta
 
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
 
-    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
+//    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
 
     private WizardDescriptor wizard;
     private LibertyWizardPanel panel;
@@ -54,7 +54,7 @@ public class LibertyWizardIterator implements WizardDescriptor.AsynchronousInsta
                 new File(userDir),
                 null,
                 TEST_SERVER_NAME,
-                TEST_RUNTIME_LOC,
+                userDir,
                 new File(System.getProperty("java.home")),
                 7777,
                 true);

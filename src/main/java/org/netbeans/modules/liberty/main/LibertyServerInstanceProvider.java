@@ -39,7 +39,6 @@ public class LibertyServerInstanceProvider implements ServerInstanceProvider, Ch
     
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
 
-    private static final String TEST_RUNTIME_LOC = "C:\\myLibertyInstallPath\\wlp";
 
     private LibertyServerInstanceProvider() {
         listeners = new ChangeSupport(this);
