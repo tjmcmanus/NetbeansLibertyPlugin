@@ -18,6 +18,9 @@ package org.netbeans.modules.liberty.main;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import org.openide.windows.IOProvider;
+import org.openide.windows.InputOutput;
+import org.openide.windows.OutputWriter;
 
 /**
  * Utilities for starting and stopping the server instance, to be invoked from
@@ -30,6 +33,9 @@ public class ServerUtils {
     public static final String BATCH_SCRIPT = "server";
     public static final String WLP_USER_DIR = "WLP_USER_DIR";
     public static final String WLP_OUTPUT_DIR = "WLP_OUTPUT_DIR";
+
+    private final InputOutput io = IOProvider.getDefault().getIO("WebSphere Liberty", false);
+    private OutputWriter writer;
 
     public enum ServerMode {
         RUN("run"), DEBUG("debug");
@@ -119,9 +125,12 @@ public class ServerUtils {
         }
         Process p = null;
         try {
-            System.out.println("Starting the server:");
+            writer = io.getOut();
+            writer.println("Starting the server:");
+            //System.out.println("Starting the server:");
             for (String curCommand : pb.command()) {
-                System.out.println("\t" + curCommand);
+                writer.println("\t" + curCommand);
+//                System.out.println("\t" + curCommand);
             }
             p = pb.start();
             // TODO: add code to hook process to NetBeans
@@ -149,9 +158,12 @@ public class ServerUtils {
 
         Process p = null;
         try {
-            System.out.println("Stopping the server:");
+            writer = io.getOut();
+            writer.println("Stopping the server:");
+//            System.out.println("Stopping the server:");
             for (String curCommand : pb.command()) {
-                System.out.println("\t" + curCommand);
+                writer.println("\t" + curCommand);
+//                System.out.println("\t" + curCommand);
             }
             p = pb.start();
             // TODO: add code to hook process to NetBean
