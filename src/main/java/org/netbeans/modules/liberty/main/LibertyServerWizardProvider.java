@@ -21,18 +21,11 @@ import org.netbeans.spi.server.ServerWizardProvider;
 import org.openide.WizardDescriptor.InstantiatingIterator;
 
 /**
- * Provides wizard in Server Manager under Tools menu. Registered in layer.xml
- * file.
+ * Provides wizard in Server Manager under Tools menu. Registered in layer.xml 
  *
  * @author gwieleng
  */
 public class LibertyServerWizardProvider implements ServerWizardProvider {
-
-    private static final String TEST_SERVER_NAME = "WebSphere Liberty";
-
-    
-    public LibertyServerWizardProvider() {
-    }
 
     @Override
     public String getDisplayName() {
