@@ -16,15 +16,12 @@
 
 package org.netbeans.modules.liberty.main;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.event.ChangeListener;
-import org.netbeans.api.server.ServerInstance;
 import org.netbeans.api.server.properties.InstanceProperties;
 import org.netbeans.api.server.properties.InstancePropertiesManager;
-import org.netbeans.spi.server.ServerInstanceFactory;
 import org.openide.util.ChangeSupport;
 
 /**
@@ -50,10 +47,8 @@ public class LibertyInstanceManager {
     private ChangeSupport listeners;
    
     private static final String TEST_SERVER_NAME = "WebSphere Liberty";
-
     
     private static final Logger LOG = Logger.getLogger(LibertyInstanceManager.class.getSimpleName());
-    
     
     public static synchronized LibertyInstanceManager getDefault() {
         if (instance == null) {
@@ -183,4 +178,5 @@ public class LibertyInstanceManager {
 //        ai.deregisterJ2EEServerInstances();
         notifyChange();
     }
+
 }

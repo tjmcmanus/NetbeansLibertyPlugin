@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.netbeans.modules.liberty.main.actions;
 
-import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.server.ServerStatusLookup;
 import org.netbeans.modules.liberty.main.server.Startable;
 import org.openide.nodes.Node;
@@ -29,13 +29,6 @@ public final class RunLibertyAction extends NodeAction {
     @Override
     protected void performAction(Node[] nodes) {
         ServerStatusLookup.getDefault().lookup(Startable.class).start();
-
-//        for (int i = 0; i < nodes.length; i++) {
-//            LibertyInstance instance = nodes[i].getLookup().lookup(LibertyInstance.class);
-//            if (instance != null) {
-//                serverUtils.startServer(instance, ServerUtils.ServerMode.RUN);
-//            }
-//        }
     }
 
     @Override
