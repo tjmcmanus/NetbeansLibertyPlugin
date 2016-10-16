@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.zzz;
 
 import org.netbeans.modules.liberty.main.ui.LibertyWizardComponent;
 import javax.swing.JComponent;
 import org.netbeans.api.server.ServerInstance;
+import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.spi.server.ServerInstanceImplementation;
 import org.openide.nodes.Node;
 

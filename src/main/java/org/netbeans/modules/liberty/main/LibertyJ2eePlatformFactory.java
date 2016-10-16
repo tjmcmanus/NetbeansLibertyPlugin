@@ -16,25 +16,13 @@
 
 package org.netbeans.modules.liberty.main;
 
-import org.netbeans.modules.liberty.main.ui.LibertyWizardIterator;
-import org.netbeans.spi.server.ServerWizardProvider;
-import org.openide.WizardDescriptor.InstantiatingIterator;
+import javax.enterprise.deploy.spi.DeploymentManager;
+import org.netbeans.modules.j2ee.deployment.plugins.spi.J2eePlatformFactory;
+import org.netbeans.modules.j2ee.deployment.plugins.spi.J2eePlatformImpl;
 
-/**
- * Provides wizard in Server Manager under Tools menu. Registered in layer.xml 
- *
- * @author gwieleng
- */
-public class LibertyServerWizardProvider implements ServerWizardProvider {
-
+public class LibertyJ2eePlatformFactory extends J2eePlatformFactory {
     @Override
-    public String getDisplayName() {
-        return "WebSphere Liberty";
+    public J2eePlatformImpl getJ2eePlatformImpl(DeploymentManager dm) {
+        return new LibertyJ2eePlatformImpl();
     }
-
-    @Override
-    public InstantiatingIterator getInstantiatingIterator() {
-        return new LibertyWizardIterator("WebSphere Liberty");
-    }
-
 }

@@ -15,6 +15,8 @@
  */
 package org.netbeans.modules.liberty.main;
 
+import org.netbeans.modules.liberty.main.zzz.*;
+
 /**
  * Log messages from server instance, to be hooked up into Log action on server
  * instance visualization

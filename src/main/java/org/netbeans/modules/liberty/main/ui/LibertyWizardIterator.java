@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 import javax.swing.event.ChangeListener;
-import org.netbeans.modules.liberty.main.LibertyInstance;
-import org.netbeans.modules.liberty.main.LibertyInstanceManager;
+import org.netbeans.modules.liberty.main.zzz.LibertyInstance;
+import org.netbeans.modules.liberty.main.zzz.LibertyInstanceManager;
 import org.openide.WizardDescriptor;
 import org.openide.WizardDescriptor.Panel;
 

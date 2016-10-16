@@ -15,6 +15,7 @@
  */
 package org.netbeans.modules.liberty.main;
 
+import org.netbeans.modules.liberty.main.zzz.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;

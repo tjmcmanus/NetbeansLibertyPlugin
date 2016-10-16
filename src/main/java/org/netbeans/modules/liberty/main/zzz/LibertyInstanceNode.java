@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.zzz;
 
 import java.awt.Image;
 import java.util.LinkedList;
 import javax.swing.Action;
 import org.netbeans.api.annotations.common.StaticResource;
-import org.netbeans.modules.liberty.main.actions.RunLibertyAction;
-import org.netbeans.modules.liberty.main.actions.StopLibertyAction;
+import org.netbeans.modules.liberty.main.ServerUtils;
+import org.netbeans.modules.liberty.main.zzz.actions.RunLibertyAction;
+import org.netbeans.modules.liberty.main.zzz.actions.StopLibertyAction;
 import org.netbeans.modules.liberty.main.server.ServerStatusLookup;
 import org.netbeans.modules.liberty.main.server.Startable;
 import org.netbeans.modules.liberty.main.server.Stoppable;

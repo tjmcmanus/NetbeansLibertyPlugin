@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main;
+package org.netbeans.modules.liberty.main.zzz;
 
 import java.util.ArrayList;
 import java.util.List;

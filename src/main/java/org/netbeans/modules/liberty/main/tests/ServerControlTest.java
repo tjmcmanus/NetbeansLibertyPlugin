@@ -16,9 +16,9 @@
 package org.netbeans.modules.liberty.main.tests;
 
 import java.io.File;
-import org.netbeans.modules.liberty.main.LibertyInstance;
 import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.ServerUtils.ServerMode;
+import org.netbeans.modules.liberty.main.zzz.LibertyInstance;
 
 public class ServerControlTest {
   public static void main(String[] args) {

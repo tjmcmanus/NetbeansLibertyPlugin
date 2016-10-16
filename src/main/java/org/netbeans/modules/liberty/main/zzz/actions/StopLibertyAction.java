@@ -14,26 +14,29 @@
  * limitations under the License.
  */
 
-package org.netbeans.modules.liberty.main.actions;
+package org.netbeans.modules.liberty.main.zzz.actions;
 
+import org.netbeans.modules.liberty.main.ServerUtils;
 import org.netbeans.modules.liberty.main.server.ServerStatusLookup;
-import org.netbeans.modules.liberty.main.server.Startable;
+import org.netbeans.modules.liberty.main.server.Stoppable;
 import org.openide.nodes.Node;
 import org.openide.util.HelpCtx;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.actions.NodeAction;
 
-@Messages("CTL_RunLibertyAction=Run")
-public final class RunLibertyAction extends NodeAction {
+@Messages("CTL_StopLibertyAction=Stop")
+public final class StopLibertyAction extends NodeAction {
+
+    private final ServerUtils serverUtils = new ServerUtils();
 
     @Override
     protected void performAction(Node[] nodes) {
-        ServerStatusLookup.getDefault().lookup(Startable.class).start();
+        ServerStatusLookup.getDefault().lookup(Stoppable.class).stop();
     }
 
     @Override
     protected boolean enable(Node[] nodes) {
-        return ServerStatusLookup.getDefault().lookup(Startable.class) != null;
+        return ServerStatusLookup.getDefault().lookup(Stoppable.class) != null;
     }
 
     @Override
@@ -43,7 +46,7 @@ public final class RunLibertyAction extends NodeAction {
 
     @Override
     public String getName() {
-        return Bundle.CTL_RunLibertyAction(); // NOI18N
+        return Bundle.CTL_StopLibertyAction(); // NOI18N
     }
 
     @Override
