@@ -17,9 +17,11 @@
 package org.netbeans.modules.liberty.main;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import org.netbeans.api.annotations.common.StaticResource;
+import org.netbeans.api.j2ee.core.Profile;
 import org.netbeans.api.java.platform.JavaPlatform;
 import org.netbeans.api.java.platform.JavaPlatformManager;
 import org.netbeans.modules.j2ee.deployment.devmodules.api.J2eeModule;
@@ -29,6 +31,25 @@ import org.openide.util.ImageUtilities;
 import org.openide.util.NbBundle;
 
 public class LibertyJ2eePlatformImpl extends J2eePlatformImpl {
+    
+    private static final Set<J2eeModule.Type> MODULE_TYPES = new HashSet<J2eeModule.Type>();
+
+    static {
+        MODULE_TYPES.add(J2eeModule.Type.EAR);
+        MODULE_TYPES.add(J2eeModule.Type.WAR);
+        MODULE_TYPES.add(J2eeModule.Type.EJB);
+        MODULE_TYPES.add(J2eeModule.Type.RAR);
+        MODULE_TYPES.add(J2eeModule.Type.CAR);
+    }
+    
+    private static final Set<Profile> LIBERTY_PROFILES = new HashSet<Profile>();
+
+    static {
+        LIBERTY_PROFILES.add(Profile.JAVA_EE_6_WEB);
+        LIBERTY_PROFILES.add(Profile.JAVA_EE_6_FULL);
+        LIBERTY_PROFILES.add(Profile.JAVA_EE_7_WEB);
+        LIBERTY_PROFILES.add(Profile.JAVA_EE_7_FULL);
+    }
     
     @Override
     public boolean isToolSupported(String toolName) {
@@ -41,20 +62,26 @@ public class LibertyJ2eePlatformImpl extends J2eePlatformImpl {
     }
     
     @Override
-    public Set getSupportedSpecVersions() {
-        Set result = new HashSet();
-        result.add(J2eeModule.J2EE_14);
-        //result.add(J2eeModule.JAVA_EE_5);
-        return result;
+    public Set<org.netbeans.api.j2ee.core.Profile> getSupportedProfiles() {
+        return Collections.unmodifiableSet(LIBERTY_PROFILES);
     }
-    
+
     @Override
-    public java.util.Set getSupportedModuleTypes() {
-        Set result = new HashSet();
-        result.add(J2eeModule.WAR);
-        //result.add(J2eeModule.EAR);
-        //result.add(J2eeModule.EJB);
-        return result;
+    public Set<org.netbeans.api.j2ee.core.Profile> getSupportedProfiles(J2eeModule.Type moduleType) {
+        return Collections.unmodifiableSet(LIBERTY_PROFILES);
+    }
+
+    @Override
+    public Set<J2eeModule.Type> getSupportedTypes() {
+        return Collections.unmodifiableSet(MODULE_TYPES);
+    }
+
+    @Override
+    public Set/*<String>*/ getSupportedJavaPlatformVersions() {
+        Set versions = new HashSet();
+        versions.add("1.7"); // NOI18N
+        versions.add("1.8"); // NOI18N
+        return versions;
     }
     
     @Override
@@ -79,14 +106,6 @@ public class LibertyJ2eePlatformImpl extends J2eePlatformImpl {
     @Override
     public String getDisplayName() {
         return NbBundle.getMessage(LibertyJ2eePlatformImpl.class, "MSG_MyServerPlatform");
-    }
-    
-    @Override
-    public Set getSupportedJavaPlatformVersions() {
-        Set versions = new HashSet();
-        versions.add("1.4"); // NOI18N
-        versions.add("1.5"); // NOI18N
-        return versions;
     }
     
     @Override
