@@ -13,69 +13,123 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.netbeans.modules.liberty.main;
 
+import java.util.Vector;
 import javax.enterprise.deploy.spi.Target;
+import javax.enterprise.deploy.spi.TargetModuleID;
+import javax.enterprise.deploy.spi.exceptions.OperationUnsupportedException;
+import javax.enterprise.deploy.spi.status.ClientConfiguration;
+import javax.enterprise.deploy.spi.status.DeploymentStatus;
+import javax.enterprise.deploy.spi.status.ProgressListener;
 import javax.enterprise.deploy.spi.status.ProgressObject;
 import org.netbeans.modules.j2ee.deployment.plugins.api.ServerDebugInfo;
 import org.netbeans.modules.j2ee.deployment.plugins.spi.StartServer;
 
-public class LibertyStartServer extends StartServer {
-    
+public class LibertyStartServer extends StartServer implements ProgressObject {
+
     @Override
     public ProgressObject startDebugging(Target target) {
         return null;
     }
-    
+
     @Override
     public boolean isDebuggable(Target target) {
         return false;
     }
-    
+
     @Override
     public boolean isAlsoTargetServer(Target target) {
         return true;
     }
-    
+
     @Override
     public ServerDebugInfo getDebugInfo(Target target) {
         return null;
     }
-    
+
     @Override
     public boolean supportsStartDeploymentManager() {
-        return false;
+        return true;
     }
-    
+
     @Override
     public ProgressObject stopDeploymentManager() {
-        return null;
+        return this;
     }
-    
+
     @Override
     public ProgressObject startDeploymentManager() {
-        return null;
+        return this;
     }
-    
+
     @Override
     public boolean needsStartForTargetList() {
         return false;
     }
-    
+
     @Override
     public boolean needsStartForConfigure() {
         return false;
     }
-    
+
     @Override
     public boolean needsStartForAdminConfig() {
         return false;
     }
-    
+
     @Override
     public boolean isRunning() {
         return false;
+    }
+
+    // ----------  Implementation of ProgressObject interface
+    private Vector listeners = new Vector();
+    private DeploymentStatus deploymentStatus;
+
+    @Override
+    public DeploymentStatus getDeploymentStatus() {
+        return deploymentStatus;
+    }
+
+    @Override
+    public TargetModuleID[] getResultTargetModuleIDs() {
+        return new TargetModuleID[]{};
+    }
+
+    @Override
+    public ClientConfiguration getClientConfiguration(TargetModuleID tmid) {
+        return null;
+    }
+
+    @Override
+    public boolean isCancelSupported() {
+        return false;
+    }
+
+    @Override
+    public void cancel() throws OperationUnsupportedException {
+        throw new OperationUnsupportedException("");
+    }
+
+    @Override
+    public boolean isStopSupported() {
+        return true;
+    }
+
+    @Override
+    public void stop() throws OperationUnsupportedException {
+        throw new OperationUnsupportedException("");
+    }
+
+    @Override
+    public void addProgressListener(ProgressListener pl) {
+        listeners.add(pl);
+    }
+
+    @Override
+    public void removeProgressListener(ProgressListener pl) {
+        listeners.remove(pl);
     }
 
 }
